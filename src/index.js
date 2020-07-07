@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './tic-tac-toe.css';
+
 class Square extends React.Component {
   render() {
     return (
