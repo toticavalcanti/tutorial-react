@@ -5,11 +5,9 @@ import './tic-tac-toe.css';
 class Square extends React.Component {
   render() {
     return (
-      React.createElement("button", { className: "square" }));
-
-
-
-  }}
+      React.createElement("button", { className: "square" }))
+  }
+}
 
 
 class Board extends React.Component {
