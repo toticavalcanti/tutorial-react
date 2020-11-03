@@ -52,11 +52,15 @@ const Game = props => {
   const [history, setHistory] = useState(initialHistory);
   const [xIsNext, setXIsNext] = useState(true);
   const [stepNumber, setStepNumber] = useState(0);
+  console.log(history)
+  console.log(xIsNext)
+  console.log(stepNumber)
   
   const handleClick = i => {
     const slicedHistory = history.slice(0, stepNumber + 1);
     const finalStepInSlicedHistory = slicedHistory[slicedHistory.length - 1];
     const newSquares = [...finalStepInSlicedHistory.squares];
+    console.log(newSquares)
     
     const winnerDeclared = Boolean(calculateWinner(newSquares));
     const squareAlreadyFilled = Boolean(newSquares[i]);
