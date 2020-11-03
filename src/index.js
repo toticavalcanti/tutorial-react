@@ -118,7 +118,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-
 /**
  * calculateWinner (helper function)
  *
@@ -126,7 +125,7 @@ ReactDOM.render(
  * Return value: 'X', 'O', or null
  */
 function calculateWinner(squares) {
-  /* Squares indexes as they appear in UI:
+  /* Squares indexes
   0 1 2
   3 4 5
   6 7 8
@@ -140,7 +139,7 @@ function calculateWinner(squares) {
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
-  ]; // shows all of the winning combinations ("lines")
+  ]; // shows all winning combinations ("lines")
 
   // Iterate over all the winning line combinations to see if the input squares
   // array has one of the with all 'X's or all 'O's. If it does, return 'X' or 'O'.
