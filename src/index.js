@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './tic-tac-toe.css';
 function Square(props) {
+  //console.log(props)
   return (
     <button className="square" onClick={props.onClick}>
       {props.value}
@@ -11,6 +12,7 @@ function Square(props) {
 
 class Board extends React.Component {
   renderSquare(i) {
+    //console.log(i)
     return (
       <Square
         value={this.props.squares[i]}
@@ -44,7 +46,7 @@ class Board extends React.Component {
 
 class Game extends React.Component {
   constructor(props) {
-    super(props);
+    super();
     this.state = {
     history: [
       {
@@ -54,6 +56,7 @@ class Game extends React.Component {
       stepNumber: 0,
       xIsNext: true
     };
+    
   }
 
   handleClick(i) {
@@ -73,6 +76,7 @@ class Game extends React.Component {
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
+    //console.log(squares)
   }
 
   jumpTo(step) {
@@ -83,10 +87,11 @@ class Game extends React.Component {
   }
 
   render() {
+    
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+    
     const moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move :
