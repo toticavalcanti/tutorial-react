@@ -9,9 +9,9 @@ const Game = props => {
   const [history, setHistory] = useState(initialHistory);
   const [xIsNext, setXIsNext] = useState(true);
   const [stepNumber, setStepNumber] = useState(0);
-  console.log(history)
-  console.log(xIsNext)
-  console.log(stepNumber)
+  //console.log(history)
+  //console.log(xIsNext)
+  //console.log(stepNumber)
   
   const handleClick = i => {
     const slicedHistory = history.slice(0, stepNumber + 1);
