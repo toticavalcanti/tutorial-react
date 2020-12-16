@@ -1,74 +1,54 @@
 import React, { useState } from "react";
-import Board from "./Board";
 import { calculateWinner } from "../helper";
+import Board from "./Board";
 
-const Game = props => {
-  const initialHistory = [
-    { squares: Array(9).fill(null) }
-  ];
-  const [history, setHistory] = useState(initialHistory);
-  const [xIsNext, setXIsNext] = useState(true);
+const Game = () => {
+  const [history, setHistory] = useState([Array(9).fill(null)]);
   const [stepNumber, setStepNumber] = useState(0);
-  //console.log(history)
-  //console.log(xIsNext)
-  //console.log(stepNumber)
-  
-  const handleClick = i => {
-    const slicedHistory = history.slice(0, stepNumber + 1);
-    const finalStepInSlicedHistory = slicedHistory[slicedHistory.length - 1];
-    const newSquares = [...finalStepInSlicedHistory.squares];
-    console.log(newSquares)
-    
-    const winnerDeclared = Boolean(calculateWinner(newSquares));
-    const squareAlreadyFilled = Boolean(newSquares[i]);
-    if (winnerDeclared || squareAlreadyFilled) return;
-    
-    newSquares[i] = xIsNext ? 'X' : 'O';
-    const newStep = { squares: newSquares };
-    const newHistory = [...slicedHistory, newStep];
-    
-    setHistory(newHistory);
-    setXIsNext(!xIsNext);
-    setStepNumber(slicedHistory.length);
+  const [xIsNext, setXisNext] = useState(true);
+  const winner = calculateWinner(history[stepNumber]);
+  const xO = xIsNext ? "X" : "O";
+
+  const handleClick = (i) => {
+    const historyPoint = history.slice(0, stepNumber + 1);
+    const current = historyPoint[stepNumber];
+    const squares = [...current];
+    // return if won or occupied
+    if (winner || squares[i]) return;
+    // select square
+    squares[i] = xO;
+    setHistory([...historyPoint, squares]);
+    setStepNumber(historyPoint.length);
+    setXisNext(!xIsNext);
   };
-  
-  const moves = history.map((step, move) => {
-    const description = Boolean(move)
-      ? `Go to move #${move}`
-      : `Go to game start`;
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
-      </li>
-    );
-  });
-  
-  const jumpTo = step => {
+
+  const jumpTo = (step) => {
     setStepNumber(step);
-    const isEvenStepNumber = step % 2 === 0;
-    setXIsNext(isEvenStepNumber);
+    setXisNext(step % 2 === 0);
   };
-  
-  const currentStep = history[stepNumber];
-  const winner = calculateWinner(currentStep.squares);
-  
-  const status = winner
-    ? `Winner: ${winner}`
-    : `Next player: ${xIsNext ? 'X' : 'O'}`;
+
+  const renderMoves = () =>
+    history.map((_step, move) => {
+      const destination = move ? `Go to move #${move}` : "Go to Start";
+      return (
+        <li key={move}>
+          <button onClick={() => jumpTo(move)}>{destination}</button>
+        </li>
+      );
+    });
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board
-          squares={currentStep.squares}
-          onClick={i => handleClick(i)}
-        />
+    <>
+      <h1>React Tic Tac Toe</h1>
+      <Board squares={history[stepNumber]} onClick={handleClick} />
+      <div className="info-wrapper">
+        <div>
+          <h3>History</h3>
+          {renderMoves()}
+        </div>
+        <h3>{winner ? "Winner: " + winner : "Next Player: " + xO}</h3>
       </div>
-      <div className="game-info">
-        <div>{status}</div>
-        <ol>{moves}</ol>
-      </div>
-    </div>
+    </>
   );
 };
 
