@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './tic-tac-toe.css';
@@ -150,3 +151,15 @@ function calculateWinner(squares) {
   }
   return null;
 }
+=======
+import React from "react";
+import ReactDOM from "react-dom";
+import "./tic-tac-toe.css";
+import Game from "./components/Game";
+
+ReactDOM.render(
+  <Game />,
+  document.getElementById('root')
+);
+
+>>>>>>> tic_tac_toe_modular
