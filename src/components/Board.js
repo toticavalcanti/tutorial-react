@@ -1,7 +1,7 @@
 import React from "react";
 import Square from "./Square";
 const Board = props => {    
-  //console.log(props)
+  console.log(props)
   const renderSquare = i => {
     return (
       <Square
