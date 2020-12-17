@@ -1,8 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Access the demo in: <br>
+[Tic Tac Toe](https://tic-tac-toe-codigo-fluente.netlify.app/).
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory src, you can run:
 
 ### `yarn start`
 

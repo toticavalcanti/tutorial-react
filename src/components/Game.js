@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { calculateWinner } from "../helper";
 import Board from "./Board";
+import { calculateWinner } from "../helper";
 
 const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -8,7 +8,9 @@ const Game = () => {
   const [xIsNext, setXisNext] = useState(true);
   const winner = calculateWinner(history[stepNumber]);
   const xO = xIsNext ? "X" : "O";
-
+  // console.log(stepNumber)
+  // console.log(history)
+  // console.log(history[stepNumber])
   const handleClick = (i) => {
     const historyPoint = history.slice(0, stepNumber + 1);
     const current = historyPoint[stepNumber];
@@ -20,9 +22,11 @@ const Game = () => {
     setHistory([...historyPoint, squares]);
     setStepNumber(historyPoint.length);
     setXisNext(!xIsNext);
+    
   };
 
   const jumpTo = (step) => {
+    //console.log(step)
     setStepNumber(step);
     setXisNext(step % 2 === 0);
   };
