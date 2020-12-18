@@ -34,7 +34,7 @@ const Game = () => {
 
   const renderMoves = () =>
     history.map((_step, move) => {
-      const destination = move ? `Go to move #${move}` : "Go to Start";
+      const destination = move ? `Ir para jogada #${move}` : "Voltar para o início do jogo";
       return (
         <li key={move}>
           <button onClick={() => jumpTo(move)}>{destination}</button>
@@ -44,14 +44,14 @@ const Game = () => {
 
   return (
     <>
-      <h1>React Tic Tac Toe</h1>
+      <h1>Tic Tac Toe - Jogo da Velha</h1>
       <Board squares={history[stepNumber]} onClick={handleClick} />
       <div className="game-wrapper">
         <div>
-          <h3>History</h3>
+          <h3>Histórico de jogadas</h3>
           {renderMoves()}
         </div>
-        <h3>{winner ? "Winner: " + winner : "Next Player: " + xO}</h3>
+        <h3>{winner ? "Vencedor: " + winner : "Próximo a jogar: " + xO}</h3>
       </div>
     </>
   );
