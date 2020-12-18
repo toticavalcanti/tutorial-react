@@ -59,6 +59,7 @@ h3 {
 
 li {
   list-style: none;
+  margin: .5rem;
 }
 
 .info-wrapper button {
