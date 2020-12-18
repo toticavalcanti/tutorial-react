@@ -14,6 +14,7 @@ const Game = () => {
   const handleClick = (i) => {
     const historyPoint = history.slice(0, stepNumber + 1);
     const current = historyPoint[stepNumber];
+    console.log(current)
     const squares = [...current];
     // return if won or occupied
     if (winner || squares[i]) return;
@@ -45,7 +46,7 @@ const Game = () => {
     <>
       <h1>React Tic Tac Toe</h1>
       <Board squares={history[stepNumber]} onClick={handleClick} />
-      <div className="info-wrapper">
+      <div className="game-wrapper">
         <div>
           <h3>History</h3>
           {renderMoves()}
